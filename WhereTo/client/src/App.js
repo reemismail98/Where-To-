@@ -8,12 +8,12 @@ import Home from './components/home/Home';
 
 function App() {
   return (
-    <div className="App">
+      <>
       <Header />
       <Box style={{marginTop:64}} >
         <Home />
       </Box>
-    </div>
+      </>
   );
 }
 
