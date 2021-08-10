@@ -18,6 +18,7 @@ const Header = () => {
                 <Typography>CONTACT</Typography>
                 <Typography>LOGIN</Typography>
             </Toolbar>
+            <h1></h1>
         </AppBar>
 
     )
