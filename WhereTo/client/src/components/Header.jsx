@@ -8,7 +8,7 @@ const useStyles = makeStyles({});
 const Header = () => {
     
 
-    
+
     const classes = useStyles();
     return (
         <AppBar>
@@ -17,6 +17,8 @@ const Header = () => {
                 <Typography>ABOUT</Typography>
                 <Typography>CONTACT</Typography>
                 <Typography>LOGIN</Typography>
+
+                <h2>asdasdas</h2>
             </Toolbar>
         </AppBar>
 
