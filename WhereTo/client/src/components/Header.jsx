@@ -20,6 +20,7 @@ const Header = () => {
 
                 <h2>asdasdas</h2>
             </Toolbar>
+            <h1>asdasdas</h1>
         </AppBar>
 
     )
