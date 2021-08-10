@@ -3,7 +3,20 @@ import React from 'react';
 import {AppBar , makeStyles, Toolbar, Typography} from '@material-ui/core';
 
 
-const useStyles = makeStyles({});
+const useStyles = makeStyles({
+    component: {
+        background: '#FFFFFF',
+        color: 'black'
+    },
+    container: {
+        justifyContent:'center',
+        '&  >*': {
+            padding: 20,
+            color: 'black',
+            textDecoration: 'none'
+        }
+    }
+});
 
 const Header = () => {
     
@@ -11,8 +24,8 @@ const Header = () => {
 
     const classes = useStyles();
     return (
-        <AppBar>
-            <Toolbar>
+        <AppBar className={classes.component}>
+            <Toolbar className={classes.container}>
                 <Typography>HOME</Typography>
                 <Typography>ABOUT</Typography>
                 <Typography>CONTACT</Typography>
