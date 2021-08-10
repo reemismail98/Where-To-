@@ -3,13 +3,18 @@
 
 import { Button, makeStyles, Table, TableCell, TableHead ,TableRow , TableBody } from '@material-ui/core';
 import React from 'react';
+import {categories} from '../../constants/data'
 
 const useStyles = makeStyles({
     create:{
-        margin:20,
-        background:"6495ED",
-        color:"#fff",
-        width:150
+        margin: 20,
+        width: '85%',
+        background: '#6495ED',
+        color: '#fff',
+        textDecoration: 'none'
+    },
+    table:{
+        border: '1px solid rgba(224, 224, 224, 1)'
     }
 })
 
@@ -22,25 +27,20 @@ const Categories = () => {
     return (
         <>
         <Button variant="contained" className={classes.create}>Create Blog</Button>
-        <Table>
+        <Table className={classes.table}>
             <TableHead>
                 <TableRow>
                     <TableCell>All Categories</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
-                <TableRow>
-                    <TableCell>France</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>Germany</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>Italy</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>Japan</TableCell>
-                </TableRow>
+                {
+                    categories.map(category =>(
+                        <TableRow>
+                            <TableCell>{category}</TableCell>
+                        </TableRow>
+                    ))
+                }
             </TableBody>
 
         </Table>

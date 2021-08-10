@@ -7,8 +7,8 @@ import React from 'react';
 
 const useStyles = makeStyles({
     image :{
-    width: '100%',
-        background: `url(${'https://ibb./my9jCJS'}) center/55% repeat-x #000`,
+        width: '100%',
+        background: `url(${'https://media.gettyimages.com/vectors/time-to-travel-banner-vector-id901788120'}) center/55% repeat-x #000`,
         height: '50vh',
         display: 'flex',
         flexDirection: 'column',
