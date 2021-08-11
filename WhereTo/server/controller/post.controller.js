@@ -1,6 +1,6 @@
-const { Post } = require('../models/post.model');
-const { User } = require('../models/user.model');
-const { Category } = require('../models/category.model');
+const { Post } = require('../model/post.model');
+const { User } = require('../model/user.model');
+const { Category } = require('../model/category.model');
 module.exports.createNewPost = (req, res) => {
     const { title,description,picture } = req.body
     Post.create({

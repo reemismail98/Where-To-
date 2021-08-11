@@ -1,6 +1,6 @@
-const PostController = require('../controllers/post.controller');
-const UserController = require('../controllers/user.controllers');
-const CategoryController = require('../controllers/category.contoller');
+const PostController = require('../controller/post.controller');
+const UserController = require('../controller/user.controller');
+const CategoryController = require('../controller/category.contoller');
 const { authenticate } = require('../config/jwt.config');
 
     module.exports = function(app){
