@@ -1,5 +1,6 @@
 const { Post } = require('../model/post.model');
-
+const { User } = require('../model/user.model');
+const { Category } = require('../model/category.model');
 module.exports.createNewPost = (req, res) => {
     const { title,description,picture } = req.body
     Post.create({
@@ -8,21 +9,18 @@ module.exports.createNewPost = (req, res) => {
        picture,
       
     }).then(post =>{
-        User.findOneAndUpdate({name: request.body.name},{$addToSet:{posts:post._id}}, {new:true}).populate('posts')
-        .then(created => response.json(created))
-        response.json(post)
-}).catch(err => console.log(err))
-// User.findOneAndUpdate({name: request.body.name},{$push:{posts: post}}, {new:true}).populate('posts')
-// .then(created => response.json(created))
-// response.json(post)
-// }).catch(err => console.log(err))
-    
-        .then(post => {res.json({post})
-        Category.findOneAndUpdate({name: request.body.name},{$addToSet:{postsCat:post._id}}, {new:true}).populate('postsCat')
-        .then(created => response.json(created))
-        response.json(post)
-}).catch(err => console.log(err))    
-    .catch(err => res.status(400).json(err))}
+        User.findOneAndUpdate({name: req.body.name},{$addToSet:{posts:post}}, {new:true}).populate('posts')
+        .then(async thisUser => {
+            const thisCategory = await Category.findOneAndUpdate({name: req.body.name},{$addToSet:{postsCat:post}}, {new:true}).populate('postsCat')
+            Post.findOneAndUpdate({_id: post._id},{$addToSet:{category:thisCategory, user:thisUser}}).then(post =>{
+
+                res.json(thisUser)
+            })
+            
+}).catch(err => res.status(400).json(err))
+
+})
+}
 
 
 
