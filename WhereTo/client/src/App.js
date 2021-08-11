@@ -4,6 +4,8 @@ import Header from './components/Header';
 import Home from './components/home/Home';
 import DetailView from './components/post/DetailView';
 import { Router } from "@reach/router";
+import CreateView from './components/post/CreateView';
+import UpdateView from './components/post/UpdateView';
 
 
 
@@ -17,6 +19,8 @@ function App() {
       <Router>
         <Home path="/" />
         <DetailView path="/detail"/>
+        <CreateView path="/create"/>
+        <UpdateView path="/update"/>
       </Router>
       </Box>
       
