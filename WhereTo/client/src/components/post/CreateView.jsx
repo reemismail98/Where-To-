@@ -1,6 +1,8 @@
 
 import { Box, makeStyles,FormControl, InputBase, Button, TextareaAutosize } from '@material-ui/core';
 import {AddCircle} from '@material-ui/icons';
+import { useState } from 'react';
+import axios from 'axios';
 const useStyle = makeStyles(theme=>({
     container:{
         margin:'50px 100px',
@@ -36,21 +38,56 @@ const useStyle = makeStyles(theme=>({
     }
 }));
 
+
+
+
 const CreateView = () => {
     const classes = useStyle();
     const url = 'https://thumbs.dreamstime.com/b/travel-world-landmarks-background-blue-sky-46083021.jpg';
+    // const [post,setPost] = useState(initialValues)
+
+
+
+
+    // const handleChange =(e)=>{
+    //     setPost({...post,[e.target.name] : e.target.value})
+    // }
+
+    const [title,setTitle] = useState("");
+    const [description,setDescription] = useState("");
+    const [picture,setPicture] = useState("");
+
+
+
+    const onSubmitHandler = e => {
+        e.preventDefault();
+        axios.post('http://localhost:8000/api/posts/new', {
+            title,
+            description,
+            picture,
+        })
+            .then(res=>console.log(res))
+            .catch(err=>console.log(err))
+    }
+
+
+
     return (
         <Box className={classes.container}>
             <img src={url} alt="Banner" className={classes.image}/>
             <FormControl className={classes.form}>
-                <AddCircle fontSize="large" color="action"/>
-                <InputBase placeholder="title" className={classes.textField}/>
-                <Button variant="contained" color="primary">Publish</Button>
+                <AddCircle fontSize="large" color="action" onChange={(e)=>setPicture(e.target.value)}/>
+                <InputBase onChange={(e) => setTitle(e.target.value)} placeholder="title" className={classes.textField} name="title" value={title}/>
+                <Button variant="contained" color="primary" onSubmit={onSubmitHandler}>Publish</Button>
             </FormControl>
             <TextareaAutosize 
             rowsMin={5}
             placeholder="Tell your Story....."
-            className={classes.textarea}/>
+            className={classes.textarea}
+            onChange={(e) => setDescription(e.target.value)}
+            name="description"
+            value={description}/>
+           
 
         </Box>
     )
