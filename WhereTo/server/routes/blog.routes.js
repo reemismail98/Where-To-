@@ -1,14 +1,19 @@
-
-const PostController = require('../controller/post.controller');
-const UserController = require('../controller/user.controller');
-const CategoryController = require('../controller/category.contoller');
+const PostController = require('../controllers/post.controller');
+const UserController = require('../controllers/user.controllers');
+const CategoryController = require('../controllers/category.contoller');
+const { authenticate } = require('../config/jwt.config');
 
     module.exports = function(app){
         app.get('/api/users', UserController.findAllUsers);
         app.get('/api/users/:id', UserController.findOneSingleUser);
-        app.put('/api/users/:id', UserController.updateExistingUser);
+       // app.put('/api/users/:id', UserController.updateExistingUser);
         app.post('/api/users/new', UserController.createNewUser);
-        app.delete('/api/users/:id', UserController.deleteAnExistingUser);
+        app.post("/api/login", UserController.login);
+        app.get("/api/logout", UserController.logout);
+
+
+       // app.delete('/api/users/:id', UserController.deleteAnExistingUser);
+
         app.get('/api/posts', PostController.findAllPosts);
         app.post('/api/posts/new', PostController.createNewPost);
         app.get('/api/posts/:id', PostController.findOneSinglePost);
