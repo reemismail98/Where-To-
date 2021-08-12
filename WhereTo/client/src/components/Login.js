@@ -7,7 +7,7 @@ import { Grid,Paper, Avatar, TextField, Button, Typography } from '@material-ui/
 import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-
+import Cookies from 'js-cookie'
 
 const Login = (props) => {
     const paperStyle={padding :20,height:'70vh',width:280, margin:"20px auto"}
@@ -23,7 +23,12 @@ const Login = (props) => {
             email,
             password,
             })
-            .then((res) => console.log(res) & navigate("/login"))
+            .then((res) =>{
+                console.log(res.data.user._id) 
+                Cookies.set("userID",res.data.user._id)
+                navigate("/")
+
+            } )
             .catch(err=>{
                 const errorResponse = err.response.data.errors; // Get the errors from err.response.data
                 const errorArr = []; // Define a temp error array to push the messages in
@@ -38,11 +43,12 @@ const Login = (props) => {
 
     return (
  <form onSubmit={onSubmitHandler}>
-     {errors.map((err, index) => <p key={index}>{err}</p>)}            
      <Paper elevation={10} style={paperStyle}>
                 <Grid align='center'>
                      <Avatar style={avatarStyle}><FlightTakeoffIcon/></Avatar>
                     <h2>Sign In</h2>
+                    {errors.map((err, index) => <p key={index}>{err}</p>)}            
+
                 </Grid>
                 <TextField label='Username' placeholder='Enter username' onChange={(e) => setEmail(e.target.value)} fullWidth required/>
                 <TextField label='Password' placeholder='Enter password' type='password' onChange={(e) => setPassword(e.target.value)} fullWidth required/>

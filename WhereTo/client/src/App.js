@@ -19,7 +19,7 @@ function App() {
       <Box style={{marginTop:64}} >
       <Router>
       <Login path="/login" />
-      <Register path="/users/new" />
+      <Register path="/register" />
         <Home path="/" />
         <DetailView path="/detail"/>
         <CreateView path="/create"/>
