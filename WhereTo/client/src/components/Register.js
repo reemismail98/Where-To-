@@ -28,15 +28,18 @@ const Login = (props) => {
             confirmPassword
             })
             .then((res) => console.log(res) & navigate("/login"))
-            .catch(err=>{
-                const errorResponse = err.response.data.errors; // Get the errors from err.response.data
-                const errorArr = []; // Define a temp error array to push the messages in
-                for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
-                    errorArr.push(errorResponse[key].message)
-                }
-                // Set Errors
-                setErrors(errorArr);
-            }) }           
+            .catch(err => console.log(err))
+        }
+            // .catch(err=>{
+            //     console.log("Am here")
+            //     const errorResponse = err.response.data.errors; // Get the errors from err.response.data
+            //     const errorArr = []; // Define a temp error array to push the messages in
+            //     for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
+            //         errorArr.push(errorResponse[key].message)
+            //     }
+            //     // Set Errors
+            //     setErrors(errorArr);
+            // }) }           
     
      
 
@@ -51,7 +54,7 @@ const Login = (props) => {
                     <h2>Sign Up</h2>
                 </Grid>
                 <TextField label='Name' placeholder='Enter name' onChange={(e) => setName(e.target.value)} fullWidth required/>
-                <TextField label='Username' placeholder='Enter username' onChange={(e) => setEmail(e.target.value)} fullWidth required/>
+                <TextField label='Email' placeholder='Enter email' onChange={(e) => setEmail(e.target.value)} fullWidth required/>
                 <TextField label='Password' placeholder='Enter password' type='password' onChange={(e) => setPassword(e.target.value)} fullWidth required/>
                 <TextField label='Confirm Password' placeholder='Enter confirm password' type='password' onChange={(e) => setConfirmPassword(e.target.value)} fullWidth required/>
                 <FormControlLabel

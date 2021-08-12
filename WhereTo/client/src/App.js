@@ -14,11 +14,10 @@ import Register from './components/Register';
 function App() {
   return (
       <>
-      <Header />
       <Box style={{marginTop:64}} >
       <Router>
-      <Login path="/login" />
-      <Register path="/users/new" />
+        <Login path="/login" />
+        <Register path="/users/new" />
         <Home path="/" />
         <DetailView path="/detail"/>
         <CreateView path="/create"/>

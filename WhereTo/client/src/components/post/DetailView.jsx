@@ -5,6 +5,7 @@ import { Box, makeStyles, Typography } from '@material-ui/core';
 import { Delete, Edit } from '@material-ui/icons';
 import { Link } from '@reach/router';
 import React from 'react'
+import Header from '../Header';
 
 const useStyle = makeStyles(theme=>({
     container:{
@@ -50,6 +51,8 @@ const DetailView = () => {
     const classes = useStyle();
     const url = 'https://thumbs.dreamstime.com/b/travel-world-landmarks-background-blue-sky-46083021.jpg';
     return(
+        <>
+        <Header/>
         <Box className={classes.container}>
             <img src={url} alt="banner" className={classes.image} />
             <Box className={classes.icons}>
@@ -63,6 +66,7 @@ const DetailView = () => {
             </Box>
                 <Typography>This is a description This is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionriptionThis is a descriptionThis is a description</Typography>
         </Box>
+        </>
     )
 }
 

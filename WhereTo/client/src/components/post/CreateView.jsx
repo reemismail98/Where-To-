@@ -3,6 +3,8 @@ import { Box, makeStyles,FormControl, InputBase, Button, TextareaAutosize, Input
 import {AddCircle, Label} from '@material-ui/icons';
 import { useState } from 'react';
 import axios from 'axios';
+import Header from '../Header';
+import { navigate } from '@reach/router';
 const useStyle = makeStyles(theme=>({
     container:{
         margin:'50px 100px',
@@ -69,11 +71,14 @@ const CreateView = () => {
         })
             .then(res=>console.log(res))
             .catch(err=>console.log(err))
+            navigate("/")
     }
 
 
 
     return (
+        <>
+        <Header/>
         <Box className={classes.container}>
             <img src={url} alt="Banner" className={classes.image}/>
             <FormControl className={classes.form}>
@@ -92,6 +97,7 @@ const CreateView = () => {
             name="description"
             value={description}/>
         </Box>
+        </>
     )
 }
 
