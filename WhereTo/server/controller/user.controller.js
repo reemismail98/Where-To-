@@ -18,14 +18,13 @@ module.exports.findAllUsers = (request, response) => {
 
 
 module.exports.createNewUser = (req, res) => {
-    console.log(req.body);
+    
     User.create(req.body)
         .then(user => {
-            console.log("asdasd"+ user);
             const userToken = jwt.sign({
                 id: user._id
-            }, process.env.SECRET_KEY)
-            console.log("asd");
+            }, process.env.FIRST_SECRET_KEY)
+           
             res.cookie("usertoken", userToken, {
                     httpOnly: true
                 })
