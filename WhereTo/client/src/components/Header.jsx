@@ -44,7 +44,7 @@ const Header = () => {
             <Toolbar className={classes.container}>
                
                 <Link to="/" className={classes.link}> <Typography>HOME</Typography></Link>
-                <Typography>ABOUT</Typography>
+                <Link to="/about"><Typography>ABOUT</Typography></Link>
                 <Typography>CONTACT</Typography>
                 <Link to="/login"><Typography>LOGIN</Typography></Link>
             </Toolbar>

@@ -8,6 +8,7 @@ import CreateView from './components/post/CreateView';
 import UpdateView from './components/post/UpdateView';
 import Login from './components/Login';
 import Register from './components/Register';
+import About from './components/post/About';
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <DetailView path="/detail"/>
         <CreateView path="/create"/>
         <UpdateView path="/update"/>
+        <About path="/about"/>
       </Router>
       </Box>
       
