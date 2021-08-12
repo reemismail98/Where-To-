@@ -1,6 +1,6 @@
 
-import { Box, makeStyles,FormControl, InputBase, Button, TextareaAutosize } from '@material-ui/core';
-import {AddCircle} from '@material-ui/icons';
+import { Box, makeStyles,FormControl, InputBase, Button, TextareaAutosize, Input } from '@material-ui/core';
+import {AddCircle, Label} from '@material-ui/icons';
 import { useState } from 'react';
 import axios from 'axios';
 const useStyle = makeStyles(theme=>({
@@ -61,6 +61,7 @@ const CreateView = () => {
 
     const onSubmitHandler = e => {
         e.preventDefault();
+        console.log("picture")
         axios.post('http://localhost:8000/api/posts/new', {
             title,
             description,
@@ -76,7 +77,10 @@ const CreateView = () => {
         <Box className={classes.container}>
             <img src={url} alt="Banner" className={classes.image}/>
             <FormControl className={classes.form}>
-                <AddCircle fontSize="large" color="action" onChange={(e)=>setPicture(e.target.value)}/>
+                {/* <AddCircle fontSize="large" color="action" onChange={(e)=>setPicture(e.target.value)}/> */}
+                <Label>add a picture </Label>
+                <br></br>
+                <Input type="file" onChange={(e)=>setPicture(e.target.value)}/> 
                 <InputBase onChange={(e) => setTitle(e.target.value)} placeholder="title" className={classes.textField} name="title" value={title}/>
                 <Button variant="contained" color="primary" onSubmit={onSubmitHandler}>Publish</Button>
             </FormControl>
@@ -87,8 +91,6 @@ const CreateView = () => {
             onChange={(e) => setDescription(e.target.value)}
             name="description"
             value={description}/>
-           
-
         </Box>
     )
 }
