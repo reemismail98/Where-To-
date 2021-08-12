@@ -25,7 +25,6 @@ const useStyles = makeStyles({
     logo:{
         width:'60px',
         float:"left"
-
     }
 });
 
