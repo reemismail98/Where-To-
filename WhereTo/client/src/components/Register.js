@@ -38,9 +38,6 @@ const Register = (props) => {
                 setErrors(errorArr);
             }) 
             }           
-    
-     
-
     return (
 
 
@@ -52,7 +49,7 @@ const Register = (props) => {
                     <h2>Sign Up</h2>
                 </Grid>
                 <TextField label='Name' placeholder='Enter name' onChange={(e) => setName(e.target.value)} fullWidth required/>
-                <TextField label='Username' placeholder='Enter username' onChange={(e) => setEmail(e.target.value)} fullWidth required/>
+                <TextField label='Email' placeholder='Enter email' onChange={(e) => setEmail(e.target.value)} fullWidth required/>
                 <TextField label='Password' placeholder='Enter password' type='password' onChange={(e) => setPassword(e.target.value)} fullWidth required/>
                 <TextField label='Confirm Password' placeholder='Enter confirm password' type='password' onChange={(e) => setConfirmPassword(e.target.value)} fullWidth required/>
                 <FormControlLabel

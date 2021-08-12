@@ -14,8 +14,6 @@ import Register from './components/Register';
 function App() {
   return (
       <>
-      <Header />
-     
       <Box style={{marginTop:64}} >
       <Router>
       <Login path="/login" />

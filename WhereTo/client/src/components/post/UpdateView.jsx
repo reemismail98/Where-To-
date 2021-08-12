@@ -1,6 +1,7 @@
 
 import { Box, makeStyles,FormControl, InputBase, Button, TextareaAutosize } from '@material-ui/core';
 import {AddCircle} from '@material-ui/icons';
+import Header from '../Header';
 const useStyle = makeStyles(theme=>({
     container:{
         margin:'50px 100px',
@@ -40,6 +41,8 @@ const UpdateView = () => {
     const classes = useStyle();
     const url = 'https://thumbs.dreamstime.com/b/travel-world-landmarks-background-blue-sky-46083021.jpg';
     return (
+        <>
+        <Header/>
         <Box className={classes.container}>
             <img src={url} alt="Banner" className={classes.image}/>
             <FormControl className={classes.form}>
@@ -51,8 +54,8 @@ const UpdateView = () => {
             rowsMin={5}
             placeholder="Tell your Story....."
             className={classes.textarea}/>
-
         </Box>
+        </>
     )
 }
 
