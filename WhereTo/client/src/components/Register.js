@@ -9,7 +9,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
 
-const Login = (props) => {
+const Register = (props) => {
     const paperStyle={padding :20,height:'70vh',width:280, margin:"20px auto"}
     const avatarStyle={backgroundColor:'#009999'}
     const btnstyle={margin:'8px 0',backgroundColor:"#009999"}
@@ -27,22 +27,17 @@ const Login = (props) => {
             password,
             confirmPassword
             })
-            .then((res) => console.log(res) & navigate("/login"))
-            .catch(err => console.log(err))
-        }
-            // .catch(err=>{
-            //     console.log("Am here")
-            //     const errorResponse = err.response.data.errors; // Get the errors from err.response.data
-            //     const errorArr = []; // Define a temp error array to push the messages in
-            //     for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
-            //         errorArr.push(errorResponse[key].message)
-            //     }
-            //     // Set Errors
-            //     setErrors(errorArr);
-            // }) }           
-    
-     
-
+            .then((res) => console.log(res) & navigate("/"))
+            .catch(err=>{
+                const errorResponse = err.response.data.errors; // Get the errors from err.response.data
+                const errorArr = []; // Define a temp error array to push the messages in
+                for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
+                    errorArr.push(errorResponse[key].message)
+                }
+                // Set Errors
+                setErrors(errorArr);
+            }) 
+            }           
     return (
 
 
@@ -79,4 +74,4 @@ const Login = (props) => {
 //         </>
     )
 }
-export default Login
+export default Register
