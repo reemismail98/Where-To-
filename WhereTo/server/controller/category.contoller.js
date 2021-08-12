@@ -11,7 +11,7 @@ module.exports.createNewCategory = (req, res) => {
 
 
 module.exports.findAllCategorys = (request, response) => {
-    Category.find({})
+    Category.find({}).populate('postsCat')
         .then(post => response.json(post))
         .catch(err => response.json(err))
 }
