@@ -63,7 +63,7 @@ const Login = (props) => {
                  />
                 <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button>
                 <Typography > Create an account ?
-                     <Link to="/users/new">
+                     <Link to="/register">
                         Sign Up 
                 </Link>
                 </Typography>
