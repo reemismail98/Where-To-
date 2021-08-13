@@ -1,5 +1,5 @@
-
-import React from 'react';
+import React, { useState } from 'react'
+import axios from 'axios'
 import {AppBar , makeStyles, Toolbar, Typography} from '@material-ui/core';
 import { Link } from '@reach/router';
 import imageSample from '../imgs/MernLogo.PNG';
@@ -36,8 +36,14 @@ const useStyles = makeStyles({
 });
 
 const Header = () => {
-    
+    const [user, setUser] = useState([]);
     const classes = useStyles();
+    const onLogoutHandler=()=>{
+         axios.get("http://localhost:8000/api/logout")
+            .then(res => {
+            setUser(res.data);
+            console.log(res.data);
+    })}
     return (
         <AppBar className={classes.component}>
             <img src={imageSample} alt="picture" className={classes.logo}></img>
@@ -46,7 +52,7 @@ const Header = () => {
                 <Link to="/" className={classes.link}> <Typography>HOME</Typography></Link>
                 <Link to="/about"><Typography>ABOUT</Typography></Link>
                 <Typography>CONTACT</Typography>
-                <Link to="/login"><Typography>LOGIN</Typography></Link>
+                <Link to="/login" onClick={onLogoutHandler}><Typography>LOGOUT</Typography></Link>
             </Toolbar>
 
         </AppBar>
