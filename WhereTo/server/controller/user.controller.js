@@ -34,10 +34,11 @@ module.exports.createNewUser = (req, res) => {
 }
 
 module.exports.login = async (req, res) => {
+
     const user = await User.findOne({ email: req.body.email })
-    .catch(err => res.status(400).json(err));
+    .catch(err => res.status(500).json(err));
     if (user === null) {
-        return res.sendStatus(400);
+        return res.sendStatus(500).json(err);
     }
     const correctPassword = await bcrypt.compare(req.body.password, user.password);
     if (!correctPassword) {
@@ -51,6 +52,49 @@ module.exports.login = async (req, res) => {
             httpOnly: true
         })
         .json({ msg: "success!", user: user, token: userToken })
+   
+    // console.log("asd");
+    // try {
+    //     console.log("ttttttt");
+    //     const user = await User.findOne({ email: req.body.email })
+    //     if (user === null) {
+    //     return res.sendStatus(400);
+    // }
+    // const correctPassword = await bcrypt.compare(req.body.password, user.password);
+    // if (!correctPassword) {
+    //     return res.sendStatus(400);
+    // }
+    // const userToken = jwt.sign({
+    //     id: user._id
+    // }, process.env.FIRST_SECRET_KEY);
+    // res
+    //     .cookie("usertoken", userToken, {
+    //         httpOnly: true
+    //     })
+    //     .json({ msg: "success!", user: user, token: userToken })
+    // }
+    // .catch(err => res.status(400).json(err));
+
+    // catch(err) {
+    //     res.status(400).json(err)
+    // }
+    
+    // .catch(err => );
+    // if (user === null) {
+    //     return res.sendStatus(400);
+    // }
+    // const correctPassword = await bcrypt.compare(req.body.password, user.password);
+    // if (!correctPassword) {
+    //     return res.sendStatus(400);
+    // }
+    // const userToken = jwt.sign({
+    //     id: user._id
+    // }, process.env.FIRST_SECRET_KEY);
+    // res
+    //     .cookie("usertoken", userToken, {
+    //         httpOnly: true
+    //     })
+    //     .json({ msg: "success!", user: user, token: userToken })
 
 }
 
