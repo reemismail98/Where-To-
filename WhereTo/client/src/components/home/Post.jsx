@@ -2,7 +2,8 @@
 
 
 import { Box , makeStyles, Typography } from '@material-ui/core';
-import React from 'react';
+import React,{useState,useEffect} from 'react';
+import axios from 'axios';
 
 
 const useStyles = makeStyles({
@@ -38,17 +39,37 @@ const useStyles = makeStyles({
     }
 })
 
+
 const Post = () => {
     const classes= useStyles();
     const url = "https://thumbs.dreamstime.com/b/travel-world-landmarks-background-blue-sky-46083021.jpg"
+    
+
+    const [post,setPost] = useState([]);
+    const [pic,setpic] = useState("")
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/posts" )
+            .then(res => {
+                setPost(res.data)
+                setpic(res.data.picture)
+                console.log(res)
+            })
+    }, [])
     return (
     
         <Box className={classes.container}>
-            <img src={url} alt="Post Picture" className={classes.image} ></img>
-            <Typography className={classes.textColor}>Germany</Typography>
-            <Typography className={classes.heading}>Title of the post</Typography>
-            <Typography className={classes.textColor}>Author Name</Typography>
-            <Typography className={classes.detail}>This is some description</Typography>
+            {post.map((post,index)=>{
+            return (
+                <>
+                <img url={pic} alt="Post Picture" className={classes.image} ></img>
+                <Typography className={classes.textColor}>Germany</Typography>
+                <Typography className={classes.heading}>{post.title}</Typography>
+                <Typography className={classes.textColor}>{post.name}</Typography>
+                <Typography className={classes.detail}>{post.description}</Typography>
+                </>
+            )})}
+           
+           
         </Box>
     )
 }

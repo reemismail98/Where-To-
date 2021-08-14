@@ -6,7 +6,7 @@ const { Category } = require('../model/category.model');
 
 
 module.exports.createNewPost = async (req, res) => {
-    const { title,description,picture,user, category } = req.body
+    const { title,description,picture,user,category } = req.body
     console.log()
     try{
         let post = await Post.create({

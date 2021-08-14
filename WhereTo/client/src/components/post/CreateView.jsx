@@ -65,8 +65,8 @@ const CreateView = () => {
 
 
 
-    const onSubmitHandler = e => {
-        e.preventDefault();
+    const onSubmitHandler = (e) => {
+        // e.preventDefault();
         console.log("picture")
         axios.post('http://localhost:8000/api/posts/new', {
             title,
@@ -87,14 +87,14 @@ const CreateView = () => {
         <Header/>
         <Box className={classes.container}>
             <img src={url} alt="Banner" className={classes.image}/>
-            <FormControl className={classes.form}>
-                {/* <AddCircle fontSize="large" color="action" onChange={(e)=>setPicture(e.target.value)}/> */}
+            <form onSubmit={onSubmitHandler} className={classes.form}>
                 <Label>add a picture </Label>
                 <br></br>
-                <Input type="file" onChange={(e)=>setPicture(e.target.value)}/> 
-                <InputBase onChange={(e) => setTitle(e.target.value)} placeholder="title" className={classes.textField} name="title" value={title}/>
-                <Button variant="contained" color="primary" onSubmit={onSubmitHandler}>Publish</Button>
-            </FormControl>
+                <input type="file" accept=".jpg" onChange={(e)=>setPicture(e.target.files[0])}/> 
+                <input type="text" onChange={(e) => setTitle(e.target.value)} placeholder="title" className={classes.textField} name="title" value={title}/>
+                <input type="submit" variant="contained" color="primary"  value="publish" />
+            
+            </form>
             <TextareaAutosize 
             rowsMin={5}
             placeholder="Tell your Story....."

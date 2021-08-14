@@ -8,6 +8,7 @@ import UpdateView from './components/post/UpdateView';
 import Login from './components/Login';
 import Register from './components/Register';
 import About from './components/post/About';
+import  Post  from './components/home/Post';
 
 
 
@@ -23,6 +24,8 @@ function App() {
         <CreateView path="/create"/>
         <UpdateView path="/update"/>
         <About path="/about"/>
+        <Post path="/hindi"/>
+      
       </Router>
       </Box>
       
