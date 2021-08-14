@@ -1,6 +1,5 @@
 import { Box } from '@material-ui/core';
 import './App.css';
-import Header from './components/Header';
 import Home from './components/home/Home';
 import DetailView from './components/post/DetailView';
 import { Router } from "@reach/router";

@@ -58,6 +58,10 @@ const CreateView = () => {
     const [title,setTitle] = useState("");
     const [description,setDescription] = useState("");
     const [picture,setPicture] = useState("");
+    const [user,setUser] = useState("");
+    const [category,setCategory] = useState("");
+
+
 
 
 
@@ -68,6 +72,8 @@ const CreateView = () => {
             title,
             description,
             picture,
+            user,
+            category
         })
             .then(res=>console.log(res))
             .catch(err=>console.log(err))
