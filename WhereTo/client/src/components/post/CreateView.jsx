@@ -60,18 +60,24 @@ const CreateView = () => {
     const [picture,setPicture] = useState("");
 
 
+    const datForm = new FormData();
+
+      
+
+
 
     const onSubmitHandler = (e) => {
-        // e.preventDefault();
-        console.log("picture")
-        axios.post('http://localhost:8000/api/posts/new', {
-            title,
-            description,
-            picture,
-        })
+        e.preventDefault();
+        console.log("am at onSubmit");
+        datForm.append("title", title);
+        datForm.append("description", description);
+        datForm.append("picture", picture);
+        console.log(datForm);
+        axios.post('http://localhost:8000/api/posts/new',datForm)
             .then(res=>console.log(res))
             .catch(err=>console.log(err))
-            navigate("/")
+            setTitle("");
+            setDescription("");
     }
 
 
@@ -84,7 +90,7 @@ const CreateView = () => {
             <form onSubmit={onSubmitHandler} className={classes.form}>
                 <Label>add a picture </Label>
                 <br></br>
-                <input type="file" accept=".jpg" onChange={(e)=>setPicture(e.target.files[0])}/> 
+                <input type="file"  onChange={(e)=>setPicture(e.target.files[0])}/> 
                 <input type="text" onChange={(e) => setTitle(e.target.value)} placeholder="title" className={classes.textField} name="title" value={title}/>
                 <input type="submit" variant="contained" color="primary"  value="publish" />
             

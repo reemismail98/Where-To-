@@ -1,11 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const multer = require("multer"); // for uploading a picture
-const router = express.Router(); // for uploading a picture
-const fs = require("fs");
-const { promisify } = require('util');
-const pipeline = promisify(require("stream").pipeline);
+// const multer = require("multer"); // for uploading a picture
+// const router = express.Router(); // for uploading a picture
+// const fs = require("fs");
+// const { promisify } = require('util');
+// const pipeline = promisify(require("stream").pipeline);
 
 
 require('dotenv').config();
@@ -16,20 +16,20 @@ app.use(cookieParser());
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 
 
-const upload = multer();
-router.post("/api/posts/new", upload.single("picture"), async function(req,res,next){
-    console.log("am at the server.js upload image");
-    console.log(req.body);
-    console.log(req.picture);
-    const{picture,body:{name}} = req;
+// const upload = multer();
+// router.post("/api/posts/new", upload.single("picture"), async function(req,res,next){
+//     console.log("am at the server.js upload image");
+//     console.log(req.body);
+//     console.log(req.picture);
+//     const{picture,body:{name}} = req;
 
-    if(file.detectedFileExtension != ".jpg") next (new Error("Invalid picture type"));
-    const pictureName = name + Math.floor(Math.random() * 1000) + picture.detectedFileExtension;
+//     if(file.detectedFileExtension != ".jpg") next (new Error("Invalid picture type"));
+//     const pictureName = name + Math.floor(Math.random() * 1000) + picture.detectedFileExtension;
     
-    await pipeline(picture.stream , fs.createWriteStream(`${__dirname}/public/images/${pictureName}`))
+//     await pipeline(picture.stream , fs.createWriteStream(`${__dirname}/public/images/${pictureName}`))
 
-    res.send("Picture upload as "  + pictureName)
-})
+//     res.send("Picture upload as "  + pictureName)
+// })
 
 
 
