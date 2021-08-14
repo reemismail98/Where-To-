@@ -58,6 +58,10 @@ const CreateView = () => {
     const [title,setTitle] = useState("");
     const [description,setDescription] = useState("");
     const [picture,setPicture] = useState("");
+    const [user,setUser] = useState("");
+    const [category,setCategory] = useState("");
+
+
 
 
     const datForm = new FormData();

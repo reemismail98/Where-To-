@@ -38,6 +38,7 @@ const useStyles = makeStyles({
 const Header = () => {
     const [user, setUser] = useState([]);
     const classes = useStyles();
+    
     const onLogoutHandler=()=>{
          axios.get("http://localhost:8000/api/logout")
             .then(res => {
