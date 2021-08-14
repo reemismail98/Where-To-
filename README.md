@@ -27,3 +27,7 @@ Group Members:
 ![Create](https://user-images.githubusercontent.com/81506640/129461597-0ad8f22d-a34c-4763-ae8b-682a6740a906.PNG)
 
 
+![Show](https://user-images.githubusercontent.com/81506640/129461623-ff3ac2f3-8365-4eef-a617-c78375f6b11e.PNG)
+
+
+
