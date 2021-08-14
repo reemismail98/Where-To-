@@ -5,12 +5,20 @@ import Header from '../Header';
 import Banner from './Banner';
 import Categories from './Categories';
 import Posts from './Posts';
-
+import Cookies from 'js-cookie'
+import { Redirect } from '@reach/router';
 
 
 const Home = () => {
     return (
-        <>
+        <>{Cookies.get('userID')=== undefined?
+    
+    <Redirect to='/login' noThrow/>
+    
+    :
+
+
+    <>
         <Header/>
         <Banner />
         <Grid container>
@@ -24,6 +32,8 @@ const Home = () => {
             
             
         </Grid>
+        </>
+    }
         
         </>
     )

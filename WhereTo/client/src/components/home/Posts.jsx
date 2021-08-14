@@ -13,7 +13,7 @@ const Posts = () => {
             <Grid item lg={3} sm={4} xs={12}>
             {/* <Link to={post._id} style={{textDecoration:"none",color:"inherit"}}> */}
 
-                <Link to="/detail" style={{textDecoration:"none",color:"inherit"}}>
+                <Link to={"/detail/"+ post.id} style={{textDecoration:"none",color:"inherit"}}>
                     <Post/>
                 </Link>
             </Grid> 

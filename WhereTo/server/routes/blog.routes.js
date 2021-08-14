@@ -16,7 +16,9 @@ const {upload} = require("../controller/post.controller");
        // app.delete('/api/users/:id', UserController.deleteAnExistingUser);
 
         app.get('/api/posts', PostController.findAllPosts);
-        app.post('/api/posts/new',upload.single("picture"), PostController.createNewPost);
+        // app.post('/api/posts/new',upload.single("picture"), PostController.createNewPost);
+        app.post('/api/posts/new', PostController.createNewPost);
+
         app.get('/api/posts/:id', PostController.findOneSinglePost);
         app.put('/api/posts/:id', PostController.updateExistingPost);
         app.delete('/api/posts/:id', PostController.deleteAnExistingPost);

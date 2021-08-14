@@ -3,6 +3,7 @@ import axios from 'axios'
 import {AppBar , makeStyles, Toolbar, Typography} from '@material-ui/core';
 import { Link } from '@reach/router';
 import imageSample from '../imgs/MernLogo.PNG';
+import Cookies from 'js-cookie';
 
 
 const useStyles = makeStyles({
@@ -44,6 +45,7 @@ const Header = () => {
             .then(res => {
             setUser(res.data);
             console.log(res.data);
+            Cookies.remove('userID')
     })}
     return (
         <AppBar className={classes.component}>

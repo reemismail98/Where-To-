@@ -55,33 +55,35 @@ const CreateView = () => {
     //     setPost({...post,[e.target.name] : e.target.value})
     // }
 
-    const [title,setTitle] = useState("");
-    const [description,setDescription] = useState("");
-    const [picture,setPicture] = useState("");
-    const [user,setUser] = useState("");
-    const [category,setCategory] = useState("");
+    const [title,setTitle] = useState('');
+    const [description,setDescription] = useState('');
+    const [picture,setPicture] = useState('');
+    const [user,setUser] = useState('');
+    const [category,setCategory] = useState('');
 
 
-
-
-    const datForm = new FormData();
-
-      
 
 
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        console.log("am at onSubmit");
-        datForm.append("title", title);
-        datForm.append("description", description);
-        datForm.append("picture", picture);
-        console.log(datForm);
-        axios.post('http://localhost:8000/api/posts/new',datForm)
-            .then(res=>console.log(res))
+        console.log("picture ededed")
+        axios.post('http://localhost:8000/api/posts/new', {
+            title,
+            description,
+            picture,
+            // user,
+            // category
+        })
+            .then(res=>{console.log(res)
+             setTitle('')   
+             setDescription('')
+             setPicture('')
+            //  setUser('')
+            //  setCategory('')
+            })
             .catch(err=>console.log(err))
-            setTitle("");
-            setDescription("");
+            navigate("/")
     }
 
 
@@ -94,7 +96,8 @@ const CreateView = () => {
             <form onSubmit={onSubmitHandler} className={classes.form}>
                 <Label>add a picture </Label>
                 <br></br>
-                <input type="file"  onChange={(e)=>setPicture(e.target.files[0])}/> 
+                {/* <input type="file" accept=".jpg" onChange={(e)=>setPicture(e.target.files[0])}/>  */}
+                <input type="text"  onChange={(e)=>setPicture(e.target.value)} value={picture}/> 
                 <input type="text" onChange={(e) => setTitle(e.target.value)} placeholder="title" className={classes.textField} name="title" value={title}/>
                 <input type="submit" variant="contained" color="primary"  value="publish" />
             

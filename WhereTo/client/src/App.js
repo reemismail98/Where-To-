@@ -20,7 +20,7 @@ function App() {
       <Login path="/login" />
       <Register path="/register" />
         <Home path="/" />
-        <DetailView path="/detail"/>
+        <DetailView path="/detail/:id"/>
         <CreateView path="/create"/>
         <UpdateView path="/update"/>
         <About path="/about"/>

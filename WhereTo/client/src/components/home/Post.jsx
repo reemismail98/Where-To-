@@ -4,6 +4,8 @@
 import { Box , makeStyles, Typography } from '@material-ui/core';
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
+import CardMedia from '@material-ui/core/CardMedia';
+
 
 
 const useStyles = makeStyles({
@@ -61,10 +63,12 @@ const Post = () => {
             {post.map((post,index)=>{
             return (
                 <>
-                <img url={pic} alt="Post Picture" className={classes.image} ></img>
+                {/* <img url={pic} alt="Post Picture" className={classes.image} ></img> */}
                 <Typography className={classes.textColor}>Germany</Typography>
                 <Typography className={classes.heading}>{post.title}</Typography>
                 <Typography className={classes.textColor}>{post.name}</Typography>
+                {/* <Typography className={classes.textColor}>{post.picture}</Typography> */}
+                <CardMedia  className={classes.media}  image={post.picture} title={post.title}></CardMedia>
                 <Typography className={classes.detail}>{post.description}</Typography>
                 </>
             )})}
