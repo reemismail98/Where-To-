@@ -3,8 +3,9 @@
 
 import { Button, makeStyles, Table, TableCell, TableHead ,TableRow , TableBody } from '@material-ui/core';
 import { Link } from '@reach/router';
-import React from 'react';
-import {categories} from '../../constants/data';
+import axios from 'axios';
+import React, {useEffect, useState} from 'react';
+
 
 
 const useStyles = makeStyles({
@@ -27,7 +28,15 @@ const useStyles = makeStyles({
 
 
 
+
+
 const Categories = () => {
+    const [categories,setCategories]=useState([])
+    useEffect(()=>{
+        axios.get("http://localhost:8000/api/category")
+        .then(res=> setCategories(res.data))
+        .catch(err=>console.log(err))
+    })
     
     const classes = useStyles();
     return (
@@ -41,9 +50,9 @@ const Categories = () => {
             </TableHead>
             <TableBody>
                 {
-                    categories.map(category =>(
-                        <TableRow>
-                            <TableCell>{category}</TableCell>
+                    categories.map((category ,i)=>(
+                        <TableRow key={i}>
+                            <TableCell>{category.name}</TableCell>
                         </TableRow>
                     ))
                 }

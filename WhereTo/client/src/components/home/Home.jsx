@@ -14,9 +14,7 @@ const Home = () => {
         <>{Cookies.get('userID')=== undefined?
     
     <Redirect to='/login' noThrow/>
-    
     :
-
 
     <>
         <Header/>

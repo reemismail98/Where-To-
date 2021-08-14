@@ -64,11 +64,11 @@ const Post = () => {
             return (
                 <>
                 {/* <img url={pic} alt="Post Picture" className={classes.image} ></img> */}
-                <Typography className={classes.textColor}>Germany</Typography>
+                <Typography className={classes.textColor}>{post.category}</Typography>
                 <Typography className={classes.heading}>{post.title}</Typography>
                 <Typography className={classes.textColor}>{post.name}</Typography>
                 {/* <Typography className={classes.textColor}>{post.picture}</Typography> */}
-                <CardMedia  className={classes.media}  image={post.picture} title={post.title}></CardMedia>
+                <CardMedia  className={classes.media}  image={post.picture}></CardMedia>
                 <Typography className={classes.detail}>{post.description}</Typography>
                 </>
             )})}

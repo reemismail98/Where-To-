@@ -1,8 +1,9 @@
 
 import { Box, makeStyles,FormControl, InputBase, Button, TextareaAutosize, Input } from '@material-ui/core';
 import {AddCircle, Label} from '@material-ui/icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Cookies from 'js-cookie'
 import Header from '../Header';
 import { navigate } from '@reach/router';
 const useStyle = makeStyles(theme=>({
@@ -60,27 +61,33 @@ const CreateView = () => {
     const [picture,setPicture] = useState('');
     const [user,setUser] = useState('');
     const [category,setCategory] = useState('');
+    const [categories,setCategories]=useState([])
+    
 
-
-
+    useEffect(()=>{
+        axios.get("http://localhost:8000/api/category")
+        .then(res=> setCategories(res.data))
+        .catch(err=>console.log(err))
+    })
 
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        console.log("picture ededed")
+        console.log("this is the cookie "+Cookies.get('userID'))
+       let user =  Cookies.get('userID')
         axios.post('http://localhost:8000/api/posts/new', {
             title,
             description,
             picture,
-            // user,
-            // category
+           user,
+            category
         })
             .then(res=>{console.log(res)
              setTitle('')   
              setDescription('')
              setPicture('')
-            //  setUser('')
-            //  setCategory('')
+             setUser('')
+             setCategory('')
             })
             .catch(err=>console.log(err))
             navigate("/")
@@ -99,8 +106,14 @@ const CreateView = () => {
                 {/* <input type="file" accept=".jpg" onChange={(e)=>setPicture(e.target.files[0])}/>  */}
                 <input type="text"  onChange={(e)=>setPicture(e.target.value)} value={picture}/> 
                 <input type="text" onChange={(e) => setTitle(e.target.value)} placeholder="title" className={classes.textField} name="title" value={title}/>
+              
+                <select onChange={(e)=>setCategory(e.target.value)}>
+                    {categories.map((cat, i)=>
+                        <option value= {cat._id}>{cat.name}</option>
+                    )}
+                    
+                </select>
                 <input type="submit" variant="contained" color="primary"  value="publish" />
-            
             </form>
             <TextareaAutosize 
             rowsMin={5}

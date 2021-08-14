@@ -100,29 +100,29 @@ const { Category } = require('../model/category.model');
 
 
 module.exports.createNewPost = async (req, res) => {
-    const { title,description,picture} = req.body
+    const { title,description,picture,user,category} = req.body
     console.log()
     try{
         let post = await Post.create({
             title,
             description,
             picture,
-            // user,
-            // category
+            user,
+            category
            
          })
-        //  let userFound = await User.findOneAndUpdate({_id: user},{$push:{posts:post}}, {new:true})
-        //  if(!userFound){
-        //     console.log("i am in not userr ")
-        //     return res.status(400).json({mesg:"Coudn't find user"})
+         let userFound = await User.findOneAndUpdate({_id: user},{$push:{posts:post}}, {new:true})
+         if(!userFound){
+            console.log("i am in not userr ")
+            return res.status(400).json({mesg:"Coudn't find user"})
            
-        //  }
-        //  let categoryFound=await Category.findOneAndUpdate({_id:category},{$push:{postsCat:post}},{new:true})
-        //  if(!categoryFound){
-        //      console.log("i am in not category ")
-        //      return res.status(400).json({mesg:"Coudn't find category"})
-        //     // throw new Error({mesg:"Coudn't find category"})
-        // }
+         }
+         let categoryFound=await Category.findOneAndUpdate({_id:category},{$push:{postsCat:post}},{new:true})
+         if(!categoryFound){
+             console.log("i am in not category ")
+             return res.status(400).json({mesg:"Coudn't find category"})
+            // throw new Error({mesg:"Coudn't find category"})
+        }
          return res.json(post)
     }
     catch (err){

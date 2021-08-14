@@ -56,8 +56,10 @@ const DetailView = (props) => {
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/posts/" + props.id)
-            .then(res => setPost(res.data))
-    })
+            .then(res => {
+                console.log(res)
+                setPost(res.data)})
+    },[])
     const deletePost = (posttId) => {
         axios.delete('http://localhost:8000/api/posts/' + posttId)
             .then(res => {
@@ -74,7 +76,7 @@ const DetailView = (props) => {
                 <Link to="/update"><Edit className={classes.icon} color="primary"/></Link>
                 <button  onClick={e => {deletePost(post._id)}}><Delete className={classes.icon}/></button>
             </Box>
-            <Typography className={classes.heading}>Title of the blog</Typography>
+            <Typography className={classes.heading}>{post.title}</Typography>
             <Box className={classes.subheading}>
                 <Typography>Author:the author name</Typography>
                 <Typography style={{marginLeft:"auto"}}>date:21.22.120</Typography>

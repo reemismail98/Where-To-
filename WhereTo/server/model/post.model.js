@@ -47,8 +47,8 @@ const PostSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    // user: {type:mongoose.Schema.Types.ObjectId, ref: 'User' },
-    // category: {type:mongoose.Schema.Types.ObjectId, ref: 'Category' },
+    user: {type:mongoose.Schema.Types.ObjectId, ref: 'User' },
+    category: {type:mongoose.Schema.Types.ObjectId, ref: 'Category' },
 
 },{timestamps: true});
 
