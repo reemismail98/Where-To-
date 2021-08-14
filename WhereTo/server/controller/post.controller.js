@@ -3,18 +3,38 @@ const { User } = require('../model/user.model');
 const { Category } = require('../model/category.model');
 
 
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+   
+    
+    destination: (req, file, callback) => {
+        console.log(file);
+        callback(null, '../../client/public/pictures');
+    },
+    filename: (req, file, callback) => {
+        callback(null, file.originalname)
+        console.log("some")
+    }
+})
+
+const upload = multer({ storage: storage });
+exports.upload = upload;
+
+
 
 
 module.exports.createNewPost = async (req, res) => {
-    const { title,description,picture,user,category } = req.body
+    console.log("I am at the createNewPot method")
+    const picture = request.file.originalname;
+    const { title,description } = req.body
     console.log()
     try{
         let post = await Post.create({
             title,
             description,
             picture,
-            user,
-            category
+
            
          })
          let userFound = await User.findOneAndUpdate({_id: user},{$push:{posts:post}}, {new:true})

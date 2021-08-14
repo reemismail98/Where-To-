@@ -2,6 +2,7 @@ const PostController = require('../controller/post.controller');
 const UserController = require('../controller/user.controller');
 const CategoryController = require('../controller/category.contoller');
 const { authenticate } = require('../config/jwt.config');
+const {upload} = require("../controller/post.controller");
 
     module.exports = function(app){
         app.get('/api/users', UserController.findAllUsers);
@@ -15,7 +16,7 @@ const { authenticate } = require('../config/jwt.config');
        // app.delete('/api/users/:id', UserController.deleteAnExistingUser);
 
         app.get('/api/posts', PostController.findAllPosts);
-        app.post('/api/posts/new/', PostController.createNewPost);
+        app.post('/api/posts/new',upload.single("picture"), PostController.createNewPost);
         app.get('/api/posts/:id', PostController.findOneSinglePost);
         app.put('/api/posts/:id', PostController.updateExistingPost);
         app.delete('/api/posts/:id', PostController.deleteAnExistingPost);
