@@ -19,3 +19,7 @@ Group Members:
 
 
 ![Login](https://user-images.githubusercontent.com/81506640/129461393-6eda6c95-e283-4c06-acd5-901720b8ad0b.PNG)
+
+
+![Home](https://user-images.githubusercontent.com/81506640/129461436-23ef344f-2b9e-41ca-9d9a-ff4cf8c65957.PNG)
+
