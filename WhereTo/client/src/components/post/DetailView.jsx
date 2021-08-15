@@ -54,33 +54,15 @@ const DetailView = (props) => {
     const classes = useStyle();
     const url = 'https://thumbs.dreamstime.com/b/travel-world-landmarks-background-blue-sky-46083021.jpg';
     const [post, setPost] = useState({})
-    
 
     useEffect(() => {
         console.log("use Effect in post detail ")
         axios.get("http://localhost:8000/api/posts/" + props.id)
             .then(res => {
                
-                console.log("Post information: " +res.data);
+                console.log(res.data)
                 setPost(res.data)})
     },[])
-    // console.log("post info:" + post.user.name)
-    // console.log("userInformation: 2 xx" + props.someId)
-
-
-    // useEffect(() => {
-    //     console.log("user infromation")
-    //     axios.get("http://localhost:8000/api/users/" + props.id)
-    //         .then(res => {
-    //             console.log("userInformation: "+res.data)
-    //             setUser(res.data)})
-
-    // },[])
-
-
-
-
-
     const deletePost = (posttId) => {
         console.log(posttId)
         axios.delete('http://localhost:8000/api/posts/' + posttId)
@@ -97,13 +79,8 @@ const DetailView = (props) => {
             {/* <Typography className={classes.image}>{post.picture}</Typography> */}
             <CardMedia  className={classes.image}  image={post.picture} ></CardMedia>
             <Box className={classes.icons}>
-                {/* {   props.someId == post.user.id &&
-                    <>
-                      <Link to={"/update/"+post._id}><Edit className={classes.icon} color="primary"/></Link>
-                      <button  onClick={(e) => deletePost(post._id)}><Delete className={classes.icon} color="primary"/></button>
-                    </>
-                } */}
-              
+                <Link to={"/update/"+post._id}><Edit className={classes.icon} color="primary"/></Link>
+                <button  onClick={(e) => deletePost(post._id)}><Delete className={classes.icon} color="primary"/></button>
             </Box>
             <Typography className={classes.heading}>{post.title}</Typography>
             <Box className={classes.subheading}>
