@@ -7,6 +7,7 @@ import { Link,navigate } from '@reach/router';
 import React,{useState,useEffect} from 'react'
 import Header from '../Header';
 import axios from 'axios'
+import CardMedia from '@material-ui/core/CardMedia';
 
 
 const useStyle = makeStyles(theme=>({
@@ -75,8 +76,8 @@ const DetailView = (props) => {
         <Header/>
         <Box className={classes.container}>
             {/* <img src={url} alt="banner" className={classes.image} /> */}
-            <Typography className={classes.image}>{post.picture}</Typography>
-
+            {/* <Typography className={classes.image}>{post.picture}</Typography> */}
+            <CardMedia  className={classes.image}  image={post.picture}></CardMedia>
             <Box className={classes.icons}>
                 <Link to="/update"><Edit className={classes.icon} color="primary"/></Link>
                 <button  onClick={(e) => deletePost(post._id)}>delete</button>
