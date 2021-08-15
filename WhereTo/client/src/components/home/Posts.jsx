@@ -37,6 +37,9 @@ const useStyles = makeStyles({
         fontSize: 18,
         fontWeight: 600
     },
+    box:{
+        margin:"3%"
+    },
     detail: {
         fontSize: 14,
         wordBreak: 'break-word'
@@ -59,7 +62,7 @@ const Posts = (props) => {
     
     return (
         posts.map((post,idx)=>{
-            return <Grid  key={idx} lg={3} sm={4} xs={12}>
+            return <Grid  key={idx} lg={3} sm={4} xs={12} className={classes.box}>
             {/*   <Grid item lg={3} sm={4} xs={12}> */}
                 <Link to={"/detail/"+ post._id} style={{textDecoration:"none",color:"inherit"}}>
                 <Typography className={classes.textColor}>{post.category.name}</Typography>
