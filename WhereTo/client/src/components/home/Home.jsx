@@ -17,6 +17,7 @@ const Home = () => {
     :
 
     <>
+  
         <Header/>
         <Banner />
         <Grid container>

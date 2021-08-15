@@ -51,10 +51,11 @@ const Header = () => {
         <AppBar className={classes.component}>
             <img src={imageSample} alt="picture" className={classes.logo}></img>
             <Toolbar className={classes.container}>
-               
+
                 <Link to="/" className={classes.link}> <Typography>HOME</Typography></Link>
                 <Link to="/about"><Typography>ABOUT</Typography></Link>
                 <Typography>CONTACT</Typography>
+                <Typography ><a href="http://localhost:3000" className={classes.link}>CHAT</a></Typography>
                 <Link to="/login" onClick={onLogoutHandler}><Typography>LOGOUT</Typography></Link>
             </Toolbar>
 

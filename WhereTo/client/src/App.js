@@ -9,10 +9,18 @@ import Login from './components/Login';
 import Register from './components/Register';
 import About from './components/post/About';
 import  Post  from './components/home/Post';
+import React,{useState} from 'react';
 
 
 
 function App() {
+  // const [some,setSome] = useState("");
+  // const theId = (ids) =>{
+  // setSome(ids);
+  // }
+  // functionForId={theId} 
+  // someId={some}
+
   return (
       <>
       <Box style={{marginTop:64}} >
@@ -20,7 +28,7 @@ function App() {
       <Login path="/login" />
       <Register path="/register" />
         <Home path="/" />
-        <DetailView path="/detail/:id"/>
+        <DetailView path="/detail/:id" />
         <CreateView path="/create"/>
         <UpdateView path="/update/:id"/>
         <About path="/about"/>

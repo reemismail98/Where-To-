@@ -16,6 +16,7 @@ const Login = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState([]); 
+   
 
     const onSubmitHandler = (e) => {
         e.preventDefault()
@@ -26,6 +27,7 @@ const Login = (props) => {
             .then((res) =>{
                 console.log(res.data.user._id) 
                 Cookies.set("userID",res.data.user._id)
+                // props.functionForId(res.data.user._id)
                 navigate("/")
 
             })
@@ -49,7 +51,7 @@ const Login = (props) => {
                      <Avatar style={avatarStyle}><FlightTakeoffIcon/></Avatar>
                     <h2>Sign In</h2>
                 </Grid>
-                <TextField label='Username' placeholder='Enter username' onChange={(e) => setEmail(e.target.value)} fullWidth required/>
+                <TextField label='Email' placeholder='Email' onChange={(e) => setEmail(e.target.value)} fullWidth required/>
                 <TextField label='Password' placeholder='Enter password' type='password' onChange={(e) => setPassword(e.target.value)} fullWidth required/>
                 <FormControlLabel
                     control={
