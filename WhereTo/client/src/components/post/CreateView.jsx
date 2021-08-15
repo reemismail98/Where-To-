@@ -75,13 +75,13 @@ const CreateView = () => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
         console.log("this is the cookie "+Cookies.get('userID'))
-       let user =  Cookies.get('userID')
+        let user =  Cookies.get('userID')
        console.log()
         axios.post('http://localhost:8000/api/posts/new', {
             title,
             description,
             picture,
-           user,
+            user,
             category
         })
             .then(res=>{console.log(res)

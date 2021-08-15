@@ -77,10 +77,10 @@ const DetailView = (props) => {
         <Box className={classes.container}>
             {/* <img src={url} alt="banner" className={classes.image} /> */}
             {/* <Typography className={classes.image}>{post.picture}</Typography> */}
-            <CardMedia  className={classes.image}  image={post.picture}></CardMedia>
+            <CardMedia  className={classes.image}  image={post.picture} ></CardMedia>
             <Box className={classes.icons}>
-                <Link to="/update"><Edit className={classes.icon} color="primary"/></Link>
-                <button  onClick={(e) => deletePost(post._id)}>delete</button>
+                <Link to={"/update/"+post._id}><Edit className={classes.icon} color="primary"/></Link>
+                <button  onClick={(e) => deletePost(post._id)}><Delete className={classes.icon} color="primary"/></button>
             </Box>
             <Typography className={classes.heading}>{post.title}</Typography>
             <Box className={classes.subheading}>

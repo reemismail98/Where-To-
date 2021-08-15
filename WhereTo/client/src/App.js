@@ -22,7 +22,7 @@ function App() {
         <Home path="/" />
         <DetailView path="/detail/:id"/>
         <CreateView path="/create"/>
-        <UpdateView path="/update"/>
+        <UpdateView path="/update/:id"/>
         <About path="/about"/>
         <Post path="/hindi"/>
       
