@@ -32,6 +32,12 @@ const useStyle = makeStyles(theme=>({
         margin:"0 30px",
         fontSize: 25
     },
+    headthree:{
+        marginLeft:"30px"
+    },
+    button:{
+        marginLeft:"30px"
+    },
     textarea:{
         width:"100%",
         marginTop:50,
@@ -84,19 +90,20 @@ const UpdateView = (props) => {
         .catch(err=>console.log(err))}
 
     const classes = useStyle();
-    const url = 'https://thumbs.dreamstime.com/b/travel-world-landmarks-background-blue-sky-46083021.jpg';
+    const url = 'https://saurusly.com/wp-content/uploads/2019/07/360-3606815_slider-image-study-abroad-consultant.png.jpg';
     return (
         <>
         <Header/>
-        <br></br>
-        <br></br>
-        <br></br>
+        <img src={url} alt="Banner" className={classes.image}/>
+
         <Box className={classes.container}>
         <form onSubmit={updatePost} className={classes.form}>
                 {/* <Label>add a picture </Label> */}
                 <br></br>
                 {/* <input type="file" accept=".jpg" onChange={(e)=>setPicture(e.target.files[0])}/>  */}
-                <input type="text"  onChange={(e)=>setPicture(e.target.value)} value={picture}/> 
+                <h3 >Add a url : </h3>
+                <input type="text"  onChange={(e)=>setPicture(e.target.value)} value={picture} className={classes.headthree}/>
+                <h3 className={classes.headthree}>Title : </h3>
                 <input type="text" onChange={(e) => setTitle(e.target.value)} placeholder="title" className={classes.textField} name="title" value={title}/>
               
                 <select onClick={(e)=>setCategory(e.target.value)}>
@@ -105,8 +112,13 @@ const UpdateView = (props) => {
                     )}
                     
                 </select>
-                <input type="submit" variant="contained" color="primary"  value="Update" />
+               
+                <input type="submit" variant="contained" color="primary"  value="Update" className={classes.button}/>
             </form>
+            <br/> <br/>
+            <br/>
+
+            <h3>Description:</h3>
             <TextareaAutosize 
             rowsMin={5}
             placeholder="Tell your Story....."
