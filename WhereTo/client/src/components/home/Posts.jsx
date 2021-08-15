@@ -28,6 +28,7 @@ const useStyles = makeStyles({
         objectFit: 'cover',
         borderRadius: '10px 10px 0 0',
     },
+
     textColor: {
         color: '#878787',
         fontSize: 12
@@ -58,14 +59,14 @@ const Posts = (props) => {
     
     return (
         posts.map((post,idx)=>{
-            return <Grid  key={idx}>
+            return <Grid  key={idx} lg={3} sm={4} xs={12}>
             {/*   <Grid item lg={3} sm={4} xs={12}> */}
                 <Link to={"/detail/"+ post._id} style={{textDecoration:"none",color:"inherit"}}>
                 <Typography className={classes.textColor}>{post.category.name}</Typography>
                 <Typography className={classes.heading}>{post.title}</Typography>
                 <Typography className={classes.textColor}>{post.user.name}</Typography>
                 {/* <Typography className={classes.textColor}>{post.picture}</Typography> */}
-                <CardMedia  className={classes.media}  image={post.picture}></CardMedia>
+                <CardMedia  className={classes.image}  image={post.picture}></CardMedia>
                 <Typography className={classes.detail}>{post.description}</Typography>
                 </Link>
             </Grid> 
