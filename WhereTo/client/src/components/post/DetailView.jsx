@@ -55,12 +55,15 @@ const DetailView = (props) => {
     const [post, setPost] = useState({})
 
     useEffect(() => {
+        console.log("use Effect in post detail ")
         axios.get("http://localhost:8000/api/posts/" + props.id)
             .then(res => {
-                console.log(res)
+               
+                console.log(res.data)
                 setPost(res.data)})
     },[])
     const deletePost = (posttId) => {
+        console.log(posttId)
         axios.delete('http://localhost:8000/api/posts/' + posttId)
             .then(res => {
                 navigate("/")
@@ -71,17 +74,19 @@ const DetailView = (props) => {
         <>
         <Header/>
         <Box className={classes.container}>
-            <img src={url} alt="banner" className={classes.image} />
+            {/* <img src={url} alt="banner" className={classes.image} /> */}
+            <Typography className={classes.image}>{post.picture}</Typography>
+
             <Box className={classes.icons}>
                 <Link to="/update"><Edit className={classes.icon} color="primary"/></Link>
-                <button  onClick={e => {deletePost(post._id)}}><Delete className={classes.icon}/></button>
+                <button  onClick={(e) => deletePost(post._id)}>delete</button>
             </Box>
             <Typography className={classes.heading}>{post.title}</Typography>
             <Box className={classes.subheading}>
-                <Typography>Author:the author name</Typography>
-                <Typography style={{marginLeft:"auto"}}>date:21.22.120</Typography>
+                {/* <Typography>{post.user.name}</Typography> */}
+                <Typography style={{marginLeft:"auto"}}>{post.createdAt}</Typography>
             </Box>
-                <Typography>This is a description This is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionThis is a descriptionriptionThis is a descriptionThis is a description</Typography>
+                <Typography>{post.description}</Typography>
         </Box>
         </>
     )

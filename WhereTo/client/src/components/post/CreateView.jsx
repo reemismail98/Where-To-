@@ -65,16 +65,18 @@ const CreateView = () => {
     
 
     useEffect(()=>{
+        console.log("i am in use Effect create component")
         axios.get("http://localhost:8000/api/category")
         .then(res=> setCategories(res.data))
         .catch(err=>console.log(err))
-    })
+    },[])
 
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
         console.log("this is the cookie "+Cookies.get('userID'))
        let user =  Cookies.get('userID')
+       console.log()
         axios.post('http://localhost:8000/api/posts/new', {
             title,
             description,
@@ -107,7 +109,7 @@ const CreateView = () => {
                 <input type="text"  onChange={(e)=>setPicture(e.target.value)} value={picture}/> 
                 <input type="text" onChange={(e) => setTitle(e.target.value)} placeholder="title" className={classes.textField} name="title" value={title}/>
               
-                <select onChange={(e)=>setCategory(e.target.value)}>
+                <select onClick={(e)=>setCategory(e.target.value)}>
                     {categories.map((cat, i)=>
                         <option value= {cat._id}>{cat.name}</option>
                     )}

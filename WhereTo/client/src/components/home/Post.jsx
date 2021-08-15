@@ -1,6 +1,5 @@
 
 
-
 import { Box , makeStyles, Typography } from '@material-ui/core';
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
@@ -54,7 +53,6 @@ const Post = () => {
             .then(res => {
                 setPost(res.data)
                 setpic(res.data.picture)
-                console.log(res)
             })
     }, [])
     return (

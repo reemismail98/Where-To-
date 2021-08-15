@@ -100,6 +100,7 @@ const { Category } = require('../model/category.model');
 
 
 module.exports.createNewPost = async (req, res) => {
+    console.log(req.body)
     const { title,description,picture,user,category} = req.body
     console.log()
     try{
@@ -137,14 +138,14 @@ module.exports.createNewPost = async (req, res) => {
 
 
 module.exports.findAllPosts = (request, response) => {
-    Post.find({})
+    Post.find().populate('user').populate('category')
         .then(post => response.json(post))
         .catch(err => response.json(err))
 }
  
 module.exports.findOneSinglePost = (req, res) => {
-    Post.findOne({ _id: req.params.id })
-        .then(oneSinglePost => res.json({ post: oneSinglePost }))
+    Post.findOne({ _id: req.params.id }).populate('user').populate('category')
+        .then(oneSinglePost => res.json(oneSinglePost ))
         .catch(err => res.json({ message: 'Something went wrong', error: err }));
 }
  
@@ -160,6 +161,7 @@ module.exports.updateExistingPost = (req, res) => {
 }
  
 module.exports.deleteAnExistingPost = (req, res) => {
+    console.log(req.params.id)
     Post.deleteOne({ _id: req.params.id })
         .then(result => res.json({ result: result }))
         .catch(err => res.json({ message: 'Something went wrong', error: err }));
